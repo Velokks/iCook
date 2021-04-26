@@ -1,0 +1,39 @@
+<section>
+  <div fxLayout="row" class="mb-20 bg-color-blue p-10 br-r-10">
+    <div fxFlex="33.3">
+      <button mat-stroked-button color="primary" (click)="goBack()">Back</button>
+    </div>
+    <div fxFlex="33.3" class="text-center fs-32 fw-800 lh-36 color-white"><strong>{{recipeObj.Name}}</strong></div>
+  </div>
+  <div class="text-center mb-20">
+    <img src="{{recipeObj.Image}}" alt="Photo of the dish" class="mb-20 w-300 br-r-20">
+    <div class="fs-16 fw-600">{{recipeObj.Description}}</div>
+  </div>
+  <mat-card class="mb-20">
+    <mat-card-header class="bg-color-green">
+      <mat-card-title>Ingredients</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngFor="let ingredient of recipeObj.Ingredients">
+        <mat-icon *ngIf="ingredientsChecked">check_circle_outline</mat-icon>
+        <span>{{ingredient}}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngIf="startedCooking">
+    <mat-card-header class="bg-color-yellow">
+      <mat-card-title>Steps</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngFor="let step of recipeObj.Steps; index as i; trackBy: trackItem">
+        <div [ngClass]="recipeObj.CompletedSteps.includes(i+1) ? 'completed': ''">
+          <mat-icon *ngIf="recipeObj.CompletedSteps.includes(i+1)" style="transform: translateY(7px);" class="mr-5 color-green">check_circle_outline</mat-icon>
+          <strong>Step {{i+1}}</strong> {{step}}
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div *ngIf="!startedCooking" class="text-center">
+    <button mat-stroked-button color="primary" (click)="startCooking(recipeObj.CompletedSteps)">Start Cooking</button>
+  </div>
+</section>

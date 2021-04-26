@@ -1,0 +1,75 @@
+<div class="p-20 br-r-10 bg-color-white h-full">
+  <div class="text-center fs-16 fw-600 mb-10">Recipe Creator</div>
+  <div class="mb-40 text-center">
+    <div class="mb-10">
+      <div>To add by voice while pressing the button say one of the commands and after that dictate what you want to add:</div>
+      <div>"Add name..."</div>
+      <div>"Add description..."</div>
+      <div>"Add ingredient..."</div>
+      <div>"Add step..."</div>
+    </div>
+    <!--<button mat-stroked-button color="primary" (mousedown)="startVoiceRecognition()" (mouseup)="testTwo()">Add By Voice</button>-->
+    <button mat-stroked-button color="primary">Add By Voice</button>
+  </div>
+  <div>
+    <div>
+      <mat-form-field class="w-full">
+        <textarea matInput placeholder="Add Name By Text" [(ngModel)]="_addRecipeService.recipeName"></textarea>
+      </mat-form-field>
+      <mat-form-field class="w-full">
+        <textarea matInput placeholder="Add Description By Text" [(ngModel)]="_addRecipeService.recipeDescription"></textarea>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field  style="width: calc(100% - 80px);">
+        <textarea matInput placeholder="Add Picture URL By Text" [(ngModel)]="pictureURL"></textarea>
+      </mat-form-field>
+      <button mat-stroked-button color="primary" class="ml-15" (click)="addURL()">Add</button>
+    </div>
+    <div>
+      <mat-form-field style="width: calc(100% - 80px);">
+        <input matInput type="text" placeholder="Add Ingredient By Text" [(ngModel)]="ingredient">
+      </mat-form-field>
+      <button mat-stroked-button color="primary" class="ml-15" (click)="addIngredient()">Add</button>
+    </div>
+    <div>
+      <mat-form-field style="width: calc(100% - 80px);">
+        <input matInput type="text" placeholder="Add Step By Text" [(ngModel)]="step">
+      </mat-form-field>
+      <button mat-stroked-button color="primary" class="ml-15" (click)="addStep()">Add</button>
+    </div>
+  </div>
+  <div class="mt-50 text-center">
+    <button mat-stroked-button color="primary" class="h-50 w-150" (click)="createRecipe()">Craete Recipe</button>
+  </div>
+</div>
+
+
+
+
+
+<!--<div *ngIf="voiceActiveSectionDisabled; else voicesection;">-->
+  <!--<button type="button" (click)="startVoiceRecognition()">Record</button>-->
+<!--</div>
+<ng-template #voicesection>
+  <ng-container *ngIf="!voiceActiveSectionError; else failure">
+    <ng-container *ngIf="voiceText; else start">
+      <span>{{voiceText}}</span>
+    </ng-container>
+    <ng-template #start>
+      <ng-container *ngIf="voiceActiveSectionListening; else beginning">
+        <span>Listening...</span>
+      </ng-container>
+      <ng-template #beginning>
+        <span>Start talking...</span>
+      </ng-template>
+    </ng-template>
+  </ng-container>
+  <ng-template #failure>
+    <span>Didn't catch that</span>
+  </ng-template>
+  <div>
+    <button (click)="closeVoiceRecognition()">Close</button>
+    <button (click)="startVoiceRecognition()">Restart</button>
+  </div>
+</ng-template>-->

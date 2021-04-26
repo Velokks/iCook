@@ -1,0 +1,86 @@
+@import "./colors.scss";
+$sizeList: (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,200,300,400,500,600);
+
+@each $name, $prop in (margin: m, padding: p) {
+  @each $size in $sizeList {
+    .#{$prop}-#{$size} {
+      #{$name}: #{$size}px !important;
+    }
+
+    .#{$prop}t-#{$size} {
+      #{$name}-top: #{$size}px !important;
+    }
+
+    .#{$prop}b-#{$size} {
+      #{$name}-bottom: #{$size}px !important;
+    }
+
+    .#{$prop}l-#{$size} {
+      #{$name}-left: #{$size}px !important;
+    }
+
+    .#{$prop}r-#{$size} {
+      #{$name}-right: #{$size}px !important;
+    }
+  }
+}
+
+@each $size in $sizeList {
+  .h-#{$size} {
+    height: #{$size}px !important;
+  }
+
+  .w-#{$size} {
+    width: #{$size}px !important;
+  }
+
+  .lh-#{$size} {
+    line-height: #{$size}px !important;
+  }
+
+  .br-r-#{$size} {
+    border-radius: #{$size}px !important;
+  }
+
+  .fs-#{$size} {
+    font-size: #{$size}px !important;
+  }
+}
+
+@each $type in (center, left, right) {
+  .text-#{$type} {
+    text-align: #{$type} !important;
+  }
+}
+
+@each $type in (400, 600, 800) {
+  .fw-#{$type} {
+    font-weight: #{$type} !important;
+  }
+}
+
+@each $type in (block, inline, inline-block, none) {
+  .dis-#{$type} {
+    display: #{$type} !important;
+  }
+}
+
+.remove-border {
+  border: none !important;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.label {
+  padding: 10px;
+  display: inline-block;
+  background: $blue-1;
+  color: $white;
+  border-radius: 10px;
+}

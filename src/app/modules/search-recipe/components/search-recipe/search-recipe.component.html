@@ -1,0 +1,12 @@
+<section class="p-20">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-20 bg-color-blue p-10 br-r-10">
+    <div class="fs-24 color-white ">iCook</div>
+    <input placeholder="Search By Recipe Name"
+           class="remove-border br-r-10 h-35 w-600 pl-10"
+           [(ngModel)]="searchValue"
+           type="text"
+           (keyup)="search()"/>
+    <button mat-stroked-button color="primary" (click)="goToAddRecipe()">Add Recipe</button>
+  </div>
+  <recipes></recipes>
+</section>

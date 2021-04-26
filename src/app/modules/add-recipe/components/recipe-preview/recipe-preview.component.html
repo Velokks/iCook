@@ -1,0 +1,30 @@
+<div class="p-20 br-r-10 bg-color-white h-full">
+  <div class="text-center fs-16 fw-600 mb-10">Recipe Preview</div>
+  <div *ngIf="_addRecipeService.recipeName.length > 0" class="mb-20 bg-color-blue p-10 br-r-10">
+    <div class="text-center fs-32 fw-800 lh-36 color-white"><strong>{{_addRecipeService.recipeName}}</strong></div>
+  </div>
+  <div class="text-center mb-20">
+    <img *ngIf="pictureURL" src="{{pictureURL}}" alt="Photo of the dish" class="mb-20 w-300 br-r-20">
+    <div *ngIf="_addRecipeService.recipeDescription.length > 0" class="fs-16 fw-600">{{_addRecipeService.recipeDescription}}</div>
+  </div>
+  <mat-card *ngIf="ingredientsArr.length > 0" class="mb-20 border-green">
+    <mat-card-header class="bg-color-green">
+      <mat-card-title>Ingredients</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngFor="let ingredient of ingredientsArr">
+        <span>{{ingredient}}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngIf="stepsArr.length > 0" class="border-yellow">
+    <mat-card-header class="bg-color-yellow">
+      <mat-card-title>Steps</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngFor="let step of stepsArr; index as i;">
+        <strong class="fs-16">Step {{i+1}}.</strong> {{step}}
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

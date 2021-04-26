@@ -1,0 +1,30 @@
+$background: #eee;
+$white: #FFF;
+$black: #000;
+$blue-1: #06aed5;
+$blue-2: #086788;
+$yellow: #f0c808;
+$red: #dd1c1a;
+$green: #289944;
+$gray: $background;
+
+$colors: ("white": $white, "black": $black, "green": $green, "red": $red, "yellow": $yellow, "blue": $blue-2, "gray": $gray);
+
+@each $name, $color in $colors {
+
+  .bg-color-#{$name} {
+    background-color: #{$color} !important;
+  }
+
+  .color-#{$name} {
+    color: #{$color} !important;
+  }
+
+  .fill-#{$name} {
+    fill: #{$color} !important;
+  }
+
+  .border-#{$name} {
+    border: solid 1px #{$color} !important;
+  }
+}

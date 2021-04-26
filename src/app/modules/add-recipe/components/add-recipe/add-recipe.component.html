@@ -1,0 +1,16 @@
+<section>
+  <div fxLayout="row" class="mb-20 bg-color-blue p-10 br-r-10">
+    <div fxFlex="33.3">
+      <button mat-stroked-button color="primary" (click)="goBack()">Back</button>
+    </div>
+    <div fxFlex="33.3" class="text-center fs-32 fw-800 lh-36 color-white"><strong>Add Recipe</strong></div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="40" class="mr-20">
+      <recipe-creator></recipe-creator>
+    </div>
+    <div fxFlex>
+      <recipe-preview></recipe-preview>
+    </div>
+  </div>
+</section>

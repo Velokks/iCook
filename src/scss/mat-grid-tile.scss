@@ -1,0 +1,15 @@
+.mat-grid-tile {
+  border-radius: 10px;
+
+  .mat-figure {
+    & > div {
+      height: 100%;
+      background-color: white;
+    }
+  }
+}
+
+.mat-grid-tile:hover {
+  box-shadow: 0 0 10px #06aed5;
+  cursor: pointer;
+}
