@@ -11,18 +11,22 @@
   </div>
   <mat-card class="mb-20">
     <mat-card-header class="bg-color-green">
-      <mat-card-title>Ingredients</mat-card-title>
+      <mat-card-title>
+        Ingredients <span class="fs-14">(To check an ingredient just say "Mark" and the number of the ingredient you want to complete)</span>
+      </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div *ngFor="let ingredient of recipeObj.Ingredients">
-        <mat-icon *ngIf="ingredientsChecked">check_circle_outline</mat-icon>
-        <span>{{ingredient}}</span>
+      <div *ngFor="let ingredient of recipeObj.Ingredients; index as i; trackBy: trackItem">
+        <mat-checkbox [(ngModel)]="ingredient.Checked" class="mr-10" color="primary"></mat-checkbox>
+        <span><strong>{{i+1}}.</strong> {{ingredient.Name}}</span>
       </div>
     </mat-card-content>
   </mat-card>
   <mat-card *ngIf="startedCooking">
     <mat-card-header class="bg-color-yellow">
-      <mat-card-title>Steps</mat-card-title>
+      <mat-card-title>
+        Steps <span class="fs-14">(To complete a step just say "Complete step" and the number of the step you want to complete)</span>
+      </mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div *ngFor="let step of recipeObj.Steps; index as i; trackBy: trackItem">

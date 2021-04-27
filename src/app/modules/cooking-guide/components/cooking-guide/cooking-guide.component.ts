@@ -26,13 +26,29 @@ export class CookingGuideComponent implements OnInit {
 
   ngOnInit(): void {
     this.subs.add(this._recipeListService.selectedRecipe.subscribe(x => {
-      this.recipeObj = x;
+      if (x) {
+        this.recipeObj = x;
+        ///////////////Quick fix...TO DO: find a way to avoid the error
+        if (!this.recipeObj.Ingredients[0].hasOwnProperty('Name')) {
+          this.recipeObj.Ingredients = this.formatIngredientsArray(x.Ingredients);
+        }
+      }
     })
     )
+
+    this.cookingPreparation();
   }
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+  }
+
+  formatIngredientsArray(arr: string[]) {
+    let newArr = [];
+    for (let x of arr) {
+      newArr.push({ Name: x, Checked: false });
+    }
+    return newArr;
   }
 
   public trackItem(index: number, item: any) {
@@ -45,6 +61,7 @@ export class CookingGuideComponent implements OnInit {
       'complete step *tag': (tag: any) => { this.completeStep(tag) }
     };
     annyang.addCommands(commands);
+    annyang.removeCommands(['start cooking', 'mark *tag'])
     annyang.start();
   }
 
@@ -53,7 +70,26 @@ export class CookingGuideComponent implements OnInit {
     this._change.detectChanges();
   }
 
+  cookingPreparation() {
+    let commands = {
+      'mark *tag': (tag: any) => { this.checkIngredient(tag) },
+      'start cooking': () => {
+        this.startCooking(this.recipeObj.CompletedSteps);
+        this._change.detectChanges();
+      }
+    };
+    annyang.addCommands(commands);
+    annyang.start();
+  }
+
+  checkIngredient(tag: any) {
+    let tagIndex = parseInt(tag);
+    this.recipeObj.Ingredients[tagIndex - 1].Checked = true;
+    this._change.detectChanges();
+  }
+
   goBack() {
+    annyang.abort();
     this._location.back();
   }
 
